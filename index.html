@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malalties del Pericardi · Preparació de la classe</title>
+<style>
+:root{--bur:#8C1D2F;--bur2:#6E1A22;--pink:#F7EBED;--blu:#2F5D7C;--lblu:#E8F0F5;--txt:#262626;--gry:#6B6B6B;--lg:#F3F3F3;--grn:#3C7A4A;--lgrn:#E8F2EA;--red:#B3261E;--lred:#FBE9E7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--txt);background:#fff;line-height:1.5}
+header{background:var(--bur);color:#fff;padding:28px 20px 24px}
+header .wrap,main{max-width:860px;margin:0 auto}
+.eyebrow{font-size:12px;font-weight:bold;letter-spacing:.06em;opacity:.85;text-transform:uppercase}
+h1{font-size:30px;margin:6px 0 4px;line-height:1.15}
+header p{margin:6px 0 0;opacity:.92;font-size:15px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+nav a{color:#fff;text-decoration:none;font-size:13px;border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:5px 11px}
+nav a:hover{background:rgba(255,255,255,.15)}
+main{padding:12px 16px 40px}
+section{background:#fff;border:1px solid #E6E6E6;border-radius:14px;padding:20px;margin:18px 0}
+.sh{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.num{flex:0 0 36px;height:36px;border-radius:50%;background:var(--bur);color:#fff;font-weight:bold;display:flex;align-items:center;justify-content:center}
+h2{font-size:20px;margin:0}
+.lead{color:var(--gry);margin:4px 0 14px;font-size:15px}
+.btn{display:inline-block;background:var(--bur);color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:bold;font-size:14px;margin:4px 6px 4px 0;border:0;cursor:pointer}
+.btn.sec{background:var(--lg);color:var(--txt)}
+.pending{background:var(--lg);color:var(--gry);border-radius:10px;padding:14px;font-size:14px}
+.steps{background:var(--pink);border-radius:10px;padding:12px 16px;font-size:14px}
+.steps b{color:var(--bur)}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.gal img{scroll-snap-align:center;flex:0 0 100%;max-width:100%;border:1px solid #DDD;border-radius:6px;background:var(--lg)}
+.gal.doc img{flex:0 0 auto;width:auto;max-width:92%;height:70vh;max-height:760px;object-fit:contain}
+.galbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px;font-size:13px;color:var(--gry)}
+.galbar button{background:var(--lg);border:0;border-radius:6px;padding:7px 12px;font-size:15px;cursor:pointer}
+audio{width:100%;margin-top:6px}
+.q{border-top:1px solid #EEE;padding:16px 0}
+.q:first-of-type{border-top:0}
+.qh{font-size:12px;color:var(--bur);font-weight:bold;text-transform:uppercase;letter-spacing:.04em}
+.qt{font-weight:bold;margin:4px 0 10px;font-size:16px}
+.opt{display:block;width:100%;text-align:left;background:var(--lg);border:2px solid transparent;border-radius:8px;padding:10px 12px;margin:6px 0;font-size:15px;cursor:pointer;color:var(--txt);font-family:inherit}
+.opt:hover:not([disabled]){border-color:#CCC}
+.opt.ok{background:var(--lgrn);border-color:var(--grn);color:#1F4A2A;font-weight:bold}
+.opt.ko{background:var(--lred);border-color:var(--red);color:var(--red)}
+.opt[disabled]{cursor:default}
+.exp{display:none;background:var(--lblu);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:14px;color:#1E3B50}
+.exp.show{display:block}
+.score{position:sticky;top:0;background:#fff;padding:8px 0;font-weight:bold;color:var(--bur);z-index:2;display:flex;justify-content:space-between;align-items:center}
+footer{max-width:860px;margin:0 auto;padding:10px 16px 40px;color:var(--gry);font-size:12px}
+@media (max-width:520px){h1{font-size:25px}section{padding:16px}}
+
+#viewer{position:fixed;inset:0;background:#111;z-index:50;display:none;flex-direction:column}
+#viewer.on{display:flex}
+#vbar{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:8px 10px;background:#1d1d1d;color:#eee;font-size:14px}
+#vbar button{background:#333;color:#fff;border:0;border-radius:6px;padding:8px 12px;font-size:16px;cursor:pointer}
+#vscroll{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;text-align:center}
+#vimg{display:inline-block;width:100%;max-width:100%;height:auto;background:#fff;transform-origin:top left}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Malalties de l’Aparell Cardio-Circulatori · 4t curs · Campus Bellvitge</div>
+<h1>Malalties del Pericardi</h1>
+<p>Material de preparació de la classe inversa · Prof. Josep Comín-Colet</p>
+<nav>
+<a href="#video">1 · Vídeo</a><a href="#podcast">2 · Podcast</a><a href="#diapositives">3 · Diapositives</a>
+<a href="#apunts">4 · Apunts</a><a href="#preguntes">5 · Preguntes prèvies</a><a href="#casos">6 · Casos clínics</a>
+</nav></div></header>
+<main>
+<section style="background:var(--pink);border-color:var(--pink)">
+<div class="steps"><b>Com preparar la classe:</b> mireu el vídeo o escolteu el podcast, repasseu les diapositives i els apunts, comproveu què heu entès amb les preguntes prèvies i llegiu els tres casos clínics. A classe els anirem desplegant pas a pas.</div>
+</section>
+
+<section id="video"><div class="sh"><div class="num">1</div><h2>Vídeo resum</h2></div>
+<p class="lead">Resum de la lliçó generat a partir de les diapositives, els apunts i les guies europees.</p>
+<div id="videoBox"></div></section>
+
+<section id="podcast"><div class="sh"><div class="num">2</div><h2>Podcast</h2></div>
+<p class="lead">Conversa de 15–20 minuts sobre la lliçó, per escoltar on vulgueu.</p>
+<div id="podcastBox"></div></section>
+
+<section id="diapositives"><div class="sh"><div class="num">3</div><h2>Diapositives de la classe</h2></div>
+<p class="lead">57 diapositives. Llisqueu horitzontalment o feu servir les fletxes.</p>
+<div class="gal" id="g1"><img src="img/classe/s-01.jpg" loading="lazy" alt="Diapositiva 1">
+<img src="img/classe/s-02.jpg" loading="lazy" alt="Diapositiva 2">
+<img src="img/classe/s-03.jpg" loading="lazy" alt="Diapositiva 3">
+<img src="img/classe/s-04.jpg" loading="lazy" alt="Diapositiva 4">
+<img src="img/classe/s-05.jpg" loading="lazy" alt="Diapositiva 5">
+<img src="img/classe/s-06.jpg" loading="lazy" alt="Diapositiva 6">
+<img src="img/classe/s-07.jpg" loading="lazy" alt="Diapositiva 7">
+<img src="img/classe/s-08.jpg" loading="lazy" alt="Diapositiva 8">
+<img src="img/classe/s-09.jpg" loading="lazy" alt="Diapositiva 9">
+<img src="img/classe/s-10.jpg" loading="lazy" alt="Diapositiva 10">
+<img src="img/classe/s-11.jpg" loading="lazy" alt="Diapositiva 11">
+<img src="img/classe/s-12.jpg" loading="lazy" alt="Diapositiva 12">
+<img src="img/classe/s-13.jpg" loading="lazy" alt="Diapositiva 13">
+<img src="img/classe/s-14.jpg" loading="lazy" alt="Diapositiva 14">
+<img src="img/classe/s-15.jpg" loading="lazy" alt="Diapositiva 15">
+<img src="img/classe/s-16.jpg" loading="lazy" alt="Diapositiva 16">
+<img src="img/classe/s-17.jpg" loading="lazy" alt="Diapositiva 17">
+<img src="img/classe/s-18.jpg" loading="lazy" alt="Diapositiva 18">
+<img src="img/classe/s-19.jpg" loading="lazy" alt="Diapositiva 19">
+<img src="img/classe/s-20.jpg" loading="lazy" alt="Diapositiva 20">
+<img src="img/classe/s-21.jpg" loading="lazy" alt="Diapositiva 21">
+<img src="img/classe/s-22.jpg" loading="lazy" alt="Diapositiva 22">
+<img src="img/classe/s-23.jpg" loading="lazy" alt="Diapositiva 23">
+<img src="img/classe/s-24.jpg" loading="lazy" alt="Diapositiva 24">
+<img src="img/classe/s-25.jpg" loading="lazy" alt="Diapositiva 25">
+<img src="img/classe/s-26.jpg" loading="lazy" alt="Diapositiva 26">
+<img src="img/classe/s-27.jpg" loading="lazy" alt="Diapositiva 27">
+<img src="img/classe/s-28.jpg" loading="lazy" alt="Diapositiva 28">
+<img src="img/classe/s-29.jpg" loading="lazy" alt="Diapositiva 29">
+<img src="img/classe/s-30.jpg" loading="lazy" alt="Diapositiva 30">
+<img src="img/classe/s-31.jpg" loading="lazy" alt="Diapositiva 31">
+<img src="img/classe/s-32.jpg" loading="lazy" alt="Diapositiva 32">
+<img src="img/classe/s-33.jpg" loading="lazy" alt="Diapositiva 33">
+<img src="img/classe/s-34.jpg" loading="lazy" alt="Diapositiva 34">
+<img src="img/classe/s-35.jpg" loading="lazy" alt="Diapositiva 35">
+<img src="img/classe/s-36.jpg" loading="lazy" alt="Diapositiva 36">
+<img src="img/classe/s-37.jpg" loading="lazy" alt="Diapositiva 37">
+<img src="img/classe/s-38.jpg" loading="lazy" alt="Diapositiva 38">
+<img src="img/classe/s-39.jpg" loading="lazy" alt="Diapositiva 39">
+<img src="img/classe/s-40.jpg" loading="lazy" alt="Diapositiva 40">
+<img src="img/classe/s-41.jpg" loading="lazy" alt="Diapositiva 41">
+<img src="img/classe/s-42.jpg" loading="lazy" alt="Diapositiva 42">
+<img src="img/classe/s-43.jpg" loading="lazy" alt="Diapositiva 43">
+<img src="img/classe/s-44.jpg" loading="lazy" alt="Diapositiva 44">
+<img src="img/classe/s-45.jpg" loading="lazy" alt="Diapositiva 45">
+<img src="img/classe/s-46.jpg" loading="lazy" alt="Diapositiva 46">
+<img src="img/classe/s-47.jpg" loading="lazy" alt="Diapositiva 47">
+<img src="img/classe/s-48.jpg" loading="lazy" alt="Diapositiva 48">
+<img src="img/classe/s-49.jpg" loading="lazy" alt="Diapositiva 49">
+<img src="img/classe/s-50.jpg" loading="lazy" alt="Diapositiva 50">
+<img src="img/classe/s-51.jpg" loading="lazy" alt="Diapositiva 51">
+<img src="img/classe/s-52.jpg" loading="lazy" alt="Diapositiva 52">
+<img src="img/classe/s-53.jpg" loading="lazy" alt="Diapositiva 53">
+<img src="img/classe/s-54.jpg" loading="lazy" alt="Diapositiva 54">
+<img src="img/classe/s-55.jpg" loading="lazy" alt="Diapositiva 55">
+<img src="img/classe/s-56.jpg" loading="lazy" alt="Diapositiva 56">
+<img src="img/classe/s-57.jpg" loading="lazy" alt="Diapositiva 57"></div>
+<div class="galbar"><button onclick="nav('g1',-1)" aria-label="Anterior">‹</button><span id="g1c"></span><button onclick="nav('g1',1)" aria-label="Següent">›</button></div>
+<p><button class="btn" onclick="openViewer('g1')">⛶ Veure a pantalla completa</button><a class="btn sec" href="Malalties_del_Pericardi_4t.pdf" target="_blank" rel="noopener">⬇ Descarregar PDF</a></p></section>
+
+<section id="apunts"><div class="sh"><div class="num">4</div><h2>Apunts de la classe</h2></div>
+<p class="lead">19 pàgines amb el text desenvolupat, taules i figures. Per llegir-los còmodament, obriu-los a pantalla completa i feu zoom.</p>
+<p><button class="btn" onclick="openViewer('g2')">⛶ Llegir els apunts a pantalla completa</button><a class="btn sec" href="Apunts_Malalties_del_Pericardi.pdf" target="_blank" rel="noopener">⬇ Descarregar PDF</a></p>
+<div class="gal doc" id="g2"><img src="img/apunts/p-01.jpg" loading="lazy" alt="Pàgina 1">
+<img src="img/apunts/p-02.jpg" loading="lazy" alt="Pàgina 2">
+<img src="img/apunts/p-03.jpg" loading="lazy" alt="Pàgina 3">
+<img src="img/apunts/p-04.jpg" loading="lazy" alt="Pàgina 4">
+<img src="img/apunts/p-05.jpg" loading="lazy" alt="Pàgina 5">
+<img src="img/apunts/p-06.jpg" loading="lazy" alt="Pàgina 6">
+<img src="img/apunts/p-07.jpg" loading="lazy" alt="Pàgina 7">
+<img src="img/apunts/p-08.jpg" loading="lazy" alt="Pàgina 8">
+<img src="img/apunts/p-09.jpg" loading="lazy" alt="Pàgina 9">
+<img src="img/apunts/p-10.jpg" loading="lazy" alt="Pàgina 10">
+<img src="img/apunts/p-11.jpg" loading="lazy" alt="Pàgina 11">
+<img src="img/apunts/p-12.jpg" loading="lazy" alt="Pàgina 12">
+<img src="img/apunts/p-13.jpg" loading="lazy" alt="Pàgina 13">
+<img src="img/apunts/p-14.jpg" loading="lazy" alt="Pàgina 14">
+<img src="img/apunts/p-15.jpg" loading="lazy" alt="Pàgina 15">
+<img src="img/apunts/p-16.jpg" loading="lazy" alt="Pàgina 16">
+<img src="img/apunts/p-17.jpg" loading="lazy" alt="Pàgina 17">
+<img src="img/apunts/p-18.jpg" loading="lazy" alt="Pàgina 18">
+<img src="img/apunts/p-19.jpg" loading="lazy" alt="Pàgina 19"></div>
+<div class="galbar"><button onclick="nav('g2',-1)" aria-label="Anterior">‹</button><span id="g2c"></span><button onclick="nav('g2',1)" aria-label="Següent">›</button></div></section>
+
+<section id="preguntes"><div class="sh"><div class="num">5</div><h2>Preguntes prèvies</h2></div>
+<p class="lead">15 preguntes per comprovar la lectura. Trieu una resposta: veureu si és correcta i per què. A classe les farem amb Kahoot.</p>
+<div class="score"><span id="score">0 / 15 respostes</span><button class="btn sec" onclick="resetQuiz()">Tornar a començar</button></div>
+<div id="quiz"></div></section>
+
+<section id="casos"><div class="sh"><div class="num">6</div><h2>Casos clínics: presentació inicial</h2></div>
+<p class="lead">Llegiu els tres casos abans de classe i penseu: <b>Què li passa? · Per què? · Com ho confirmaríeu? · Què faríeu?</b></p>
+<div class="gal" id="g3"><img src="img/casos/c-1.jpg" loading="lazy" alt="Cas 1">
+<img src="img/casos/c-2.jpg" loading="lazy" alt="Cas 2">
+<img src="img/casos/c-3.jpg" loading="lazy" alt="Cas 3">
+<img src="img/casos/c-4.jpg" loading="lazy" alt="Cas 4"></div>
+<div class="galbar"><button onclick="nav('g3',-1)" aria-label="Anterior">‹</button><span id="g3c"></span><button onclick="nav('g3',1)" aria-label="Següent">›</button></div>
+<p><button class="btn" onclick="openViewer('g3')">⛶ Veure a pantalla completa</button><a class="btn sec" href="Casos_Clinics_Pericardi_Preparatori.pdf" target="_blank" rel="noopener">⬇ Descarregar PDF</a></p></section>
+</main>
+<footer>Fonts: Guies ESC 2025 de miocarditis i pericarditis (Eur Heart J 2025;46:3952–4041) · Guies ESC 2015 de malalties pericàrdiques (Eur Heart J 2015;36:2921–2964). Facultat de Medicina i Ciències de la Salut · Universitat de Barcelona.</footer>
+<div id="viewer" role="dialog" aria-modal="true"><div id="vbar">
+<button onclick="vstep(-1)" aria-label="Anterior">‹</button><span id="vcount"></span><button onclick="vstep(1)" aria-label="Següent">›</button>
+<span style="flex:1"></span><button onclick="vzoom(-1)" aria-label="Allunyar">−</button><button onclick="vzoom(1)" aria-label="Apropar">+</button><button onclick="closeViewer()" aria-label="Tancar">✕</button></div>
+<div id="vscroll"><img id="vimg" alt=""></div></div>
+<script>
+const VIDEO_URL = "https://youtu.be/s4s_5rfAFZI";      // enllaç de YouTube
+const PODCAST_FILE = "";   // fitxer d'àudio propi (p. ex. podcast.mp3)
+const PODCAST_URL = "https://ubarcelona-my.sharepoint.com/:u:/g/personal/josepcomin_ub_edu/IQCIPUOXurYCQ7ri7JOpBj-hAZnEF8vQa7Z2C8TXb92BFAc?e=iFsgXq";    // o enllaç extern (Drive, etc.)
+const QUIZ = [{"q": "Quin volum de líquid conté normalment la cavitat pericàrdica?", "a": ["Menys de 5 mL", "15–40 mL", "100–150 mL", "250–300 mL"], "c": 2, "e": "La cavitat pericàrdica és un espai virtual amb 15–40 mL d’ultrafiltrat plasmàtic que fa de lubricant.", "s": "Anatomia"}, {"q": "Per què el dolor pericardític s’irradia a les espatlles i als trapezis?", "a": ["Per isquèmia dels músculs trapezis", "Per irritació dels nervis intercostals", "Per irritació del nervi frènic", "Per afectació del nervi vague"], "c": 3, "e": "El pericardi parietal està innervat pel nervi frènic; la seva irritació explica la irradiació als trapezis.", "s": "Pericarditis aguda"}, {"q": "Quina postura alleuja típicament el dolor de la pericarditis aguda?", "a": ["Assegut i inclinat endavant", "Decúbit supí", "Decúbit lateral esquerre", "Trendelenburg"], "c": 1, "e": "El dolor augmenta amb la inspiració, la tos i el decúbit, i millora assegut i inclinat endavant.", "s": "Pericarditis aguda"}, {"q": "En quina proporció de pacients amb pericarditis aguda sentim el frec pericàrdic?", "a": ["En gairebé tots (>90 %)", "En dos terços", "En menys d’un terç", "Mai: només es veu a l’eco"], "c": 3, "e": "El frec és patognomònic però només es detecta en menys del 33 % dels casos; és transitori i fluctuant.", "s": "Pericarditis aguda"}, {"q": "Segons les guies ESC 2025, quan és definitiu el diagnòstic de pericarditis?", "a": ["Dolor + frec pericàrdic", "Presentació clínica + ≥2 criteris addicionals", "Troponina elevada + dolor toràcic", "Vessament a l’eco, sense més criteris"], "c": 2, "e": "ESC 2025: presentació clínica + ≥2 criteris addicionals (frec, ECG, PCR, vessament, RM) = definitiva; 1 = possible.", "s": "Pericarditis aguda"}, {"q": "Quina alteració de l’ECG és la més precoç i freqüent en la pericarditis aguda?", "a": ["Ones Q patològiques", "Elevació convexa localitzada de l’ST", "Blocatge de branca dreta", "Descens del segment PR"], "c": 4, "e": "El descens del PR és l’alteració més precoç i freqüent; l’ST s’eleva de forma difusa i còncava.", "s": "Pericarditis aguda"}, {"q": "Quina derivació de l’ECG mostra imatge recíproca (ST ↓, PR ↑) en la pericarditis aguda?", "a": ["aVR", "DII", "V5", "aVL"], "c": 1, "e": "aVR (i a vegades V1) és l’única derivació amb imatge recíproca: descens de l’ST i elevació del PR.", "s": "Pericarditis aguda"}, {"q": "Quin és el tractament de primera línia d’una pericarditis aguda de baix risc?", "a": ["Corticoides + colchicina", "Anakinra", "AAS o AINE + colchicina", "Antibiòtics empírics"], "c": 3, "e": "AAS/AINE + colchicina (classe I, nivell A). Els corticoides no són de primera línia; els anti-IL-1 són per a casos refractaris.", "s": "Pericarditis aguda"}, {"q": "Com definim la miopericarditis (ESC 2025)?", "a": ["Miocarditis amb vessament pericàrdic", "Pericarditis + troponina ↑ sense disfunció nova del VE", "Pericarditis + disfunció nova del VE", "Pericarditis amb fibril·lació auricular"], "c": 2, "e": "Miopericarditis: pericarditis definitiva amb troponina elevada sense disfunció nova del VE. Si hi ha disfunció, perimiocarditis.", "s": "Miopericarditis"}, {"q": "Quina etiologia té més risc d’evolucionar a pericarditis constrictiva?", "a": ["Idiopàtica o viral", "Autoimmune", "Neoplàstica", "Bacteriana (TBC, purulenta)"], "c": 4, "e": "Risc de constricció: <1 % idiopàtica/viral, 2–5 % autoimmune/neoplàstica, 20–30 % bacteriana.", "s": "Complicacions"}, {"q": "A partir de quina mida (eco, en diàstole) es considera gran un vessament pericàrdic?", "a": [">5 mm", ">10 mm", ">20 mm", ">40 mm"], "c": 3, "e": "Lleu <10 mm, moderat 10–20 mm, gran >20 mm.", "s": "Vessament"}, {"q": "Què determina sobretot que un vessament produeixi taponament?", "a": ["La velocitat d’acumulació del líquid", "El volum total de líquid", "Si és un trasudat o un exsudat", "La localització del vessament"], "c": 1, "e": "Velocitat > volum: ≈250 mL bruscos poden taponar; en acumulació lenta es toleren fins a ≈1000 mL.", "s": "Taponament"}, {"q": "Quina és la tríada de Beck?", "a": ["Febre, dolor i frec", "Ingurgitació jugular, tons apagats, hipotensió", "Dispnea, edemes i ascites", "Taquicàrdia, crepitants i febre"], "c": 2, "e": "Tríada de Beck (taponament agut): ingurgitació jugular, tons cardíacs apagats i hipotensió arterial.", "s": "Taponament"}, {"q": "Quin tractament està contraindicat en un pacient amb taponament cardíac?", "a": ["Sèrum fisiològic", "Pericardiocentesi", "Inotròpics", "Diürètics"], "c": 4, "e": "Diürètics i vasodilatadors redueixen la precàrrega i poden desencadenar el xoc. El volum ajuda mentre es drena.", "s": "Taponament"}, {"q": "Què és el signe de Kussmaul?", "a": ["Caiguda de la PAS >10 mmHg en inspiració", "↑ de la ingurgitació jugular en inspiració", "Respiració profunda i ràpida", "So protodiastòlic després del 2n to"], "c": 2, "e": "Kussmaul: la ingurgitació jugular augmenta (o no baixa) en inspiració; molt típic de la constricció. Les altres opcions descriuen el pols paradoxal i el knock.", "s": "Constricció"}];
+
+function el(h){const d=document.createElement('div');d.innerHTML=h;return d.firstElementChild;}
+const vb=document.getElementById('videoBox');
+vb.appendChild(VIDEO_URL? el(`<a class="btn" href="${VIDEO_URL}" target="_blank" rel="noopener">▶ Veure el vídeo a YouTube</a>`) : el('<div class="pending">Disponible aviat.</div>'));
+const pb=document.getElementById('podcastBox');
+if(PODCAST_FILE){pb.appendChild(el(`<audio controls preload="none" src="${PODCAST_FILE}"></audio>`));}
+else if(PODCAST_URL){pb.appendChild(el(`<a class="btn" href="${PODCAST_URL}" target="_blank" rel="noopener">🎧 Escoltar el podcast</a>`));}
+else pb.appendChild(el('<div class="pending">Disponible aviat.</div>'));
+
+function nav(id,d){const g=document.getElementById(id);const w=g.firstElementChild.getBoundingClientRect().width+10;g.scrollBy({left:d*w,behavior:'smooth'});}
+function counter(id){const g=document.getElementById(id),c=document.getElementById(id+'c');const n=g.children.length;
+ const upd=()=>{const w=g.firstElementChild.getBoundingClientRect().width+10;c.textContent=(Math.min(n,Math.round(g.scrollLeft/w)+1))+' / '+n;};
+ g.addEventListener('scroll',()=>requestAnimationFrame(upd));window.addEventListener('resize',upd);upd();}
+['g1','g2','g3'].forEach(counter);
+
+let answered=0, right=0;
+function renderQuiz(){const q=document.getElementById('quiz');q.innerHTML='';answered=0;right=0;upScore();
+ QUIZ.forEach((it,i)=>{const d=el(`<div class="q"><div class="qh">Pregunta ${i+1} · ${it.s}</div><div class="qt"></div><div class="opts"></div><div class="exp"></div></div>`);
+  d.querySelector('.qt').textContent=it.q; d.querySelector('.exp').textContent=it.e;
+  const os=d.querySelector('.opts');
+  it.a.forEach((a,j)=>{const b=document.createElement('button');b.className='opt';b.textContent=String.fromCharCode(65+j)+') '+a;
+   b.onclick=()=>{const bs=os.querySelectorAll('button');bs.forEach((x,k)=>{x.disabled=true;if(k===it.c-1){x.classList.add('ok');x.textContent+='  ✓';}});
+    if(j!==it.c-1){b.classList.add('ko');b.textContent+='  ✗';}else right++;answered++;upScore();d.querySelector('.exp').classList.add('show');};
+   os.appendChild(b);});
+  q.appendChild(d);});}
+function upScore(){document.getElementById('score').textContent=answered<QUIZ.length?`${answered} / ${QUIZ.length} respostes`:`Resultat: ${right} / ${QUIZ.length} correctes`;}
+function resetQuiz(){renderQuiz();document.getElementById('preguntes').scrollIntoView({behavior:'smooth'});}
+renderQuiz();
+
+let V={list:[],i:0,z:1};
+function openViewer(id){V.list=[...document.getElementById(id).querySelectorAll('img')].map(x=>x.getAttribute('src'));
+ const g=document.getElementById(id);const w=g.firstElementChild.getBoundingClientRect().width+10;V.i=Math.min(V.list.length-1,Math.round(g.scrollLeft/w));V.z=1;vshow();
+ document.getElementById('viewer').classList.add('on');document.body.style.overflow='hidden';}
+function closeViewer(){document.getElementById('viewer').classList.remove('on');document.body.style.overflow='';}
+function vshow(){const im=document.getElementById('vimg');im.src=V.list[V.i];im.style.width=(100*V.z)+'%';im.style.maxWidth=V.z>1?'none':'100%';
+ document.getElementById('vcount').textContent=(V.i+1)+' / '+V.list.length;document.getElementById('vscroll').scrollTo(0,0);}
+function vstep(d){V.i=Math.max(0,Math.min(V.list.length-1,V.i+d));vshow();}
+function vzoom(d){V.z=Math.max(1,Math.min(3,V.z+0.5*d));vshow();}
+document.addEventListener('keydown',e=>{if(!document.getElementById('viewer').classList.contains('on'))return;
+ if(e.key==='Escape')closeViewer();if(e.key==='ArrowRight')vstep(1);if(e.key==='ArrowLeft')vstep(-1);});
+let tx=null;const vs=()=>document.getElementById('vscroll');
+document.addEventListener('touchstart',e=>{if(V.z===1&&e.target.id==='vimg')tx=e.touches[0].clientX;},{passive:true});
+document.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>60)vstep(dx<0?1:-1);},{passive:true});
+</script>
+</body></html>
